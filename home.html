@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Product Website</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: beige;
+            padding: 10px 20px;
+            color: black;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .navbar a:hover {
+            color: grey;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        /* Login/Sign Up Button */
+        .login-btn {
+            background-color: #ff4747;
+            color: white;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #d63636;
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .hero img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .shop-now {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .shop-now:hover {
+            transform: scale(1.1);
+            background-color: grey;
+        }
+
+        /* Information Section */
+        .info-box {
+            background-color: beige;
+            color: black;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .info-box h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .info-box p {
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px 20px;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <img src="images/bestlogo.png" alt="Website Logo" class="logo">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+        <!-- Login/Sign Up Button -->
+        <a href="login-sign.html" class="login-btn">Login / Sign Up</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">Welcome to Our Store</h1>
+        <img src="images\airpod 4.png" alt="Featured Product">
+        <a href="shop.html" class="shop-now">Shop Now</a>
+    </section>
+
+    <!-- Information Section -->
+    <div class="info-box">
+        <h2>Why Choose Us?</h2>
+        <p>We offer the highest quality products with a commitment to customer satisfaction. Explore our curated collection today and experience excellence like never before.</p>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 Professional Product Website. All rights reserved.</p>
+        <p>Privacy Policy | Terms of Service | Contact Us</p>
+    </div>
+</body>
+</html>

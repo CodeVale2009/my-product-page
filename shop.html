@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 15px 20px;
+            color: white;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        /* Cart Icon */
+        .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Home Button */
+        .home-button {
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Main Product Section */
+        .product-page {
+            display: flex;
+            padding: 50px 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .product-images {
+            position: relative;
+            width: 50%;
+            text-align: center;
+        }
+
+        .product-images img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-images img:hover {
+            transform: scale(1.05);
+        }
+
+        .thumbnail-images {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .thumbnail-images img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .thumbnail-images img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Product Details Section */
+        .product-details {
+            margin-left: 50px;
+            width: 40%;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .product-details h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .product-details p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .product-details .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        .message-seller {
+            background-color: #ff4747;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .message-seller:hover {
+            background-color: #d63636;
+        }
+
+        .pickup-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffeb3b;
+            color: #333;
+            font-weight: bold;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* More Products Section */
+        .more-products {
+            margin-top: 50px;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .more-products h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .product-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .product-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+        }
+
+        .product-item img {
+            width: 100%;
+            max-width: 180px;
+            border-radius: 5px;
+        }
+
+        .product-item p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Modal (Pop-up) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark background */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            text-align: center;
+        }
+
+        .modal h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            float: right;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .product-page {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product-images,
+            .product-details {
+                width: 100%;
+                margin: 0;
+            }
+
+            .product-details h1 {
+                font-size: 28px;
+            }
+
+            .message-seller {
+                width: auto;
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+
+            .product-list {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="images/bestlogo.png" alt="Website Logo" class="logo">
+        <a href="#" class="cart-icon">&#x1F6D2;</a> <!-- Cart Icon -->
+        <a href="home.html" class="home-button">Home</a> <!-- Home Button -->
+    </div>
+
+    <!-- Product Page Section -->
+    <div class="product-page">
+        <!-- Product Images Section -->
+        <div class="product-images">
+            <img id="main-product-image" src="images/airpod 4.png" alt="AirPod 4">
+            <div class="thumbnail-images">
+                <img src="images/airpod-review.png" alt="AirPod 4 Thumbnail" onclick="changeImage('images/airpod 4.png')">
+                <img src="images/airpod-2.png" alt="AirPod 4 Thumbnail" onclick="changeImage('images/airpod 4.png')">
+                <img src="images/AirPods-Fourth-Generation-Feature-Purple-Triad.jpg" alt="AirPod 4 Thumbnail" onclick="changeImage('images/airpod 4.png')">
+            </div>
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="product-details">
+            <h1>AirPod 4</h1>
+            <p>Experience the latest in wireless audio technology with the AirPod 4. With superior sound quality, longer battery life, and a sleek, ergonomic design, these AirPods are perfect for both casual listening and professional use.</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Advanced noise cancellation for a better listening experience.</li>
+                <li>Comfortable fit for extended use.</li>
+                <li>Seamless connectivity with Apple devices.</li>
+                <li>Up to 20 hours of battery life on a single charge.</li>
+                <li>Water and sweat resistant.</li>
+                <li>Touch controls for ease of use.</li>
+            </ul>
+            <div class="price">$100</div>
+            <button id="messageSellerBtn" class="message-seller">Message Seller</button>
+            <div class="pickup-info">
+                Pickup Only | Available Locally in Glendale, CA
+            </div>
+        </div>
+    </div>
+
+    <!-- More Products Section -->
+    <div class="more-products">
+        <h2>Other Items You May Like</h2>
+        <div class="product-list">
+            <div class="product-item" onclick="changeImage('images/airpod 4.png')">
+                <img src="images/airpod 4.png" alt="Product 1">
+                <p>Product 1</p>
+            </div>
+            <div class="product-item" onclick="changeImage('images/airpod 4.png')">
+                <img src="images/airpod 4.png" alt="Product 2">
+                <p>Product 2</p>
+            </div>
+            <div class="product-item" onclick="changeImage('images/airpod 4.png')">
+                <img src="images/airpod 4.png" alt="Product 3">
+                <p>Product 3</p>
+            </div>
+            <div class="product-item" onclick="changeImage('images/airpod 4.png')">
+                <img src="images/airpod 4.png" alt="Product 4">
+                <p>Product 4</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 Professional Product Website. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a></p>
+    </div>
+
+    <!-- Modal (Pop-up) -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>To purchase the Airpods, please text us at <strong>661-403-8216</strong></h2>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(imageUrl) {
+            document.getElementById('main-product-image').src = imageUrl;
+        }
+
+        // Modal functionality
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("messageSellerBtn");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
+``
